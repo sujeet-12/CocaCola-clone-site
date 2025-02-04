@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+           <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocacola site</title>
+    <link rel="stylesheet" href="style.css"></link>
+      <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+    </head>
+    <body>
+    <header>
+       <iconify-icon icon="simple-icons:cocacola" width="90" height="90"></iconify-icon>
+     <iconify-icon onclick="gd()" icon="game-icons:soda-bottle" width="40" height="40"></iconify-icon>
+    </header>
+    <main>
+    <div class="section">
+         <h1>Refresh Your World with COLA</h1> 
+         <circle></circle>
+         
+          <img src="https://static.vecteezy.com/system/resources/previews/036/624/221/non_2x/aluminum-can-of-coca-cola-with-water-drops-isolated-on-transparent-background-free-png.png?hl=en-US">
+           
+    
+          <p>Coca-Cola is a refreshing carbonated soft drink known for its iconic taste, offering a sweet and fizzy experience that brings people together and adds a burst of energy to any moment.</p>
+
+      
+    
+    </div>
+        <div class="wrapper">
+        <iconify-icon id="left" icon="meteor-icons:angles-left" width="24" height="24"></iconify-icon>
+        <ul class="carousel">
+            <li class="card">
+                <div class="img"><img src="https://purepng.com/public/uploads/large/purepng.com-sprite-canfood-can-drink-beverage-liquid-941524622356diord.png?hl=en-US" alt="img" draggable="false"></div>
+                <span>Sprite</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src="https://assets.stickpng.com/images/580b57fbd9996e24bc43c10f.png?hl=en-US" alt="img" draggable="false"></div>
+                <span>Fanta</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src="https://www.saisampurna.com/wp-content/uploads/2023/10/4237757-1695476988217.png?hl=en-US" alt="img" draggable="false"></div>
+                <span>Limca</span>
+            </li>
+        
+        </ul>
+<iconify-icon id="right" icon="meteor-icons:angles-right" width="24" height="24"></iconify-icon>
+        
+    </div>
+     
+      <div class="info">
+          <h2>Cola Vibes</h2>
+          <p>Sparkle your day with Coca-Cola. The perfect refreshment.</p>          
+          <img src="https://png.pngtree.com/png-clipart/20231116/original/pngtree-coca-cola-bottled-drink-isolated-photo-png-image_13575918.png?hl=en-US">
+             <iconify-icon icon="simple-icons:cocacola" width="90" height="90"></iconify-icon>
+      </div>
+      
+       <div class="details">
+        <img src="https://pngimg.com/uploads/cocacola/cocacola_PNG26.png?hl=en-US"> 
+        <p><b>Our Goal: </b>Refresh your moment with Coca-Cola – the perfect blend of taste, refreshment, and happiness in every sip. Whether you're sharing it with friends or enjoying a quiet moment, Coca-Cola always makes life a little sweeter. </p>
+          
+           
+          
+       </div>
+      
+ <div class="logos">
+    
+  <div class="inner">      
+    <div class="logo"><iconify-icon icon="tabler:brand-x" width="40" height="40"></iconify-icon></div>
+    <div class="logo"><iconify-icon icon="stash:social-whatsapp-solid" width="40" height="40"></iconify-icon></div>
+    <div class="logo"><iconify-icon icon="foundation:social-pinterest" width="40" height="40"></iconify-icon></div>
+  </div>
+   <div class="inner">   
+    <div class="logo"><iconify-icon icon="ion:social-linkedin" width="40" height="40"></iconify-icon></div>
+    <div class="logo"><iconify-icon icon="tabler:brand-unity" width="40" height="40"></iconify-icon></div>
+    <div class="logo"><iconify-icon icon="simple-line-icons:social-spotify" width="40" height="40"></iconify-icon></div>
+  </div>
+  <div class="inner">    
+    <div class="logo"><iconify-icon icon="ion:social-github" width="40" height="40"></iconify-icon></div>
+    <div class="logo"><iconify-icon icon="tabler:brand-vscode" width="40" height="40"></iconify-icon></div>
+    <div class="logo"><iconify-icon icon="tabler:brand-github-copilot" width="40" height="40"></iconify-icon></div>
+  </div>
+</div>
+
+<div class="inverted-radius">
+     <h1> IF YOU ARE CUB <iconify-icon icon="arcticons:coca-cola" width="48" height="48"></iconify-icon>. CocaCola is LOVE. </h1>
+</div>
+
+<button id="scrollToTopBtn">Top</button>
+      
+    </main>
+    <footer>Made with ♥️ by Hritik. © All rights reserved. 2025</footer>
+      <script>
+          $(document).scroll(function() {
+    // Show the button after scrolling 100px
+    if ($(this).scrollTop() > 100) {
+        $('#scrollToTopBtn').fadeIn();
+    } else {
+        $('#scrollToTopBtn').fadeOut();
+    }
+});
+
+$('#scrollToTopBtn').click(function() {
+    // Animate scroll to the top
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
+});
+
+const wrapper = document.querySelector(".wrapper");
+const carousel = document.querySelector(".carousel");
+const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+const arrowBtns = document.querySelectorAll(".wrapper iconify-icon");
+const carouselChildrens = [...carousel.children];
+
+let isDragging = false,
+    isAutoPlay = true,
+    startX,
+    startScrollLeft,
+    timeoutId;
+
+// Get the number of cards that can fit in the carousel at once
+let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+
+// Insert copies of the last few cards to beginning of carousel for infinite scrolling
+carouselChildrens
+    .slice(-cardPerView)
+    .reverse()
+    .forEach((card) => {
+        carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+    });
+
+// Insert copies of the first few cards to end of carousel for infinite scrolling
+carouselChildrens.slice(0, cardPerView).forEach((card) => {
+    carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+});
+
+// Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
+carousel.classList.add("no-transition");
+carousel.scrollLeft = carousel.offsetWidth;
+carousel.classList.remove("no-transition");
+
+// Add event listeners for the arrow buttons to scroll the carousel left and right
+arrowBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        carousel.scrollLeft += btn.id == "left" ? -firstCardWidth : firstCardWidth;
+    });
+});
+
+const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add("dragging");
+    // Records the initial cursor and scroll position of the carousel
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+};
+
+const dragging = (e) => {
+    if (!isDragging) return; // if isDragging is false return from here
+    // Updates the scroll position of the carousel based on the cursor movement
+
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+};
+
+const dragStop = () => {
+    isDragging = false;
+    carousel.classList.remove("dragging");
+};
+
+const infiniteScroll = () => {
+    // If the carousel is at the beginning, scroll to the end
+    if (carousel.scrollLeft === 0) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.scrollWidth - 2 * carousel.offsetWidth;
+        carousel.classList.remove("no-transition");
+    }
+    // If the carousel is at the end, scroll to the beginning
+    else if (
+        Math.ceil(carousel.scrollLeft) ===
+        carousel.scrollWidth - carousel.offsetWidth
+    ) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.offsetWidth;
+        carousel.classList.remove("no-transition");
+    }
+
+    // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+    clearTimeout(timeoutId);
+    if (!wrapper.matches(":hover")) autoPlay();
+};
+
+const autoPlay = () => {
+    if (window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+    // Autoplay the carousel after every 2500 ms
+    timeoutId = setTimeout(() => (carousel.scrollLeft += firstCardWidth), 2500);
+};
+autoPlay();
+
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
+carousel.addEventListener("scroll", infiniteScroll);
+wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+wrapper.addEventListener("mouseleave", autoPlay);
+
+function gd(){
+    swal({
+  title: "New Code",
+  text: "Cocacola UI page hope you like my code Thanks",
+  icon: "success",// info, warning, error,  success
+  
+  })
+}
+      </script>
+    </body>
+         </html>
